@@ -1,6 +1,6 @@
 const travauxContainer = document.querySelector('.gallery')
 
-const travauxApi = await fetch ('http://localhost:5678/api/works')
+let travauxApi = await fetch ('http://localhost:5678/api/works')
 travauxApi = await travauxApi.json()
 
 createWorks(travauxApi,travauxContainer)
@@ -19,3 +19,13 @@ function createWorks (travauxApi, gallery) {
     });
 
 }
+
+// affichage travaux par filtres //
+
+async function getCategory () {
+    let categoryApi = await fetch ('http://localhost:5678/api/categories');
+    categoryApi = await categoryApi.json();
+    console.log(categoryApi)
+}
+
+getCategory();
