@@ -13,11 +13,12 @@ console.log(travauxApi)
 //<figure> <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" /> <figcaption>Abajour Tahina</figcaption> </figure>
 
 
-function createWorks (travauxApi, gallery) { 
-    travauxApi.forEach(element => {console.log(travauxApi) 
+function createWorks (travaux, gallery) {
+    gallery.innerHTML = '' 
+    travaux.forEach(element => {console.log(travaux) 
         console.log(element.title)
 
-        travauxContainer.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
+        gallery.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
          </figure>`      
     });
 
@@ -28,31 +29,43 @@ function createWorks (travauxApi, gallery) {
 const filtersContainer = document.getElementById("portfolio")
 
 // Récupération des catégories
-async function getCategory () {
-    let categoryApi = await fetch ('http://localhost:5678/api/categories');
+async function getCategories () {
+    const categoryApi = await fetch ('http://localhost:5678/api/categories');
     return await categoryApi.json();
 }
 
-getCategory();
 
-// Création des catégories //
 
-async function createCategory () {
-    const categorys = await getCategory();
-    categorys.forEach((category) => {
+async function createCategories () {
+    const categories = await getCategories();
+    categories.forEach((category) => {
         filtersContainer.innerHTML += `<button id ="${category.id}">${category.name}</button>`
     });
 }
 
-createCategory();
+await createCategories();
 
 // Filtrer les travaux par catégories //
 
-async function worksWithinCategory() {
-    const travaux = await travauxApi
+async function filtersWorks() {
+    const travaux = travauxApi
     console.log(travaux);
-    const button = document.querySelectorAll("portfolio button")
-    console.log(button)
+    const buttons = document.querySelectorAll("#portfolio button")
+    console.log(buttons);
+    buttons.forEach(button => {button.addEventListener("click", function(e){
+        console.log(e.target.getAttribute("id"));
+        const idSelected = e.target.getAttribute("id");
+        const idSelectedNumber = parseInt(idSelected, 10)
+        const objets = travauxApi.filter(travail => idSelectedNumber === travail.categoryId);
+        console.log(objets)
+
+
+        createWorks(objets,travauxContainer)
+
+    })
+
+        
+    });
 }
 
-worksWithinCategory();
+filtersWorks();
