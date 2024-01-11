@@ -8,17 +8,9 @@ travauxApi = await travauxApi.json()
 
 createWorks(travauxApi,travauxContainer)
 
-console.log(travauxApi)
-
-//<figure> <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" /> <figcaption>Abajour Tahina</figcaption> </figure>
-
-
 function createWorks (travaux, gallery) {
-    gallery.innerHTML = '' 
-    travaux.forEach(element => {console.log(travaux) 
-        console.log(element.title)
-
-        gallery.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
+    travauxApi.forEach(element => {
+        travauxContainer.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
          </figure>`      
     });
 
@@ -26,7 +18,7 @@ function createWorks (travaux, gallery) {
 
 // Filtres //
 
-const filtersContainer = document.getElementById("portfolio")
+const filtersContainer = document.querySelector('.filters')
 
 // Récupération des catégories
 async function getCategories () {
@@ -35,37 +27,52 @@ async function getCategories () {
 }
 
 
-
 async function createCategories () {
     const categories = await getCategories();
-    categories.forEach((category) => {
-        filtersContainer.innerHTML += `<button id ="${category.id}">${category.name}</button>`
+    categories.forEach(category => {
+        filtersContainer.innerHTML += `<button class = "filter__btn" id ="${category.id}">${category.name}</button>`
+        
     });
 }
 
 await createCategories();
 
-// Filtrer les travaux par catégories //
 
-async function filtersWorks() {
-    const travaux = travauxApi
-    console.log(travaux);
-    const buttons = document.querySelectorAll("#portfolio button")
-    console.log(buttons);
-    buttons.forEach(button => {button.addEventListener("click", function(e){
-        console.log(e.target.getAttribute("id"));
-        const idSelected = e.target.getAttribute("id");
-        const idSelectedNumber = parseInt(idSelected, 10)
-        const objets = travauxApi.filter(travail => idSelectedNumber === travail.categoryId);
-        console.log(objets)
-
-
-        createWorks(objets,travauxContainer)
-
+async function filtersCategories() {
+const works = await travauxApi;
+const buttons = document.querySelectorAll(".filter__btn");
+buttons.forEach(button => {
+    button.addEventListener("click",(e)=> {
+        const buttonId = e.target.id;
+        travauxContainer.innerHTML = "";
+        if (buttonId !== "null") {
+            const worksFilters = works.filter(travail => {
+                return travail.categoryId == buttonId;
+            });
+            worksFilters.forEach(travail => {
+                travauxContainer.innerHTML += `<figure> <img src="${travail.imageUrl}" alt="" /> ${travail.title}
+         </figure>`
+            });
+            console.log(worksFilters);
+        } else {
+            createWorks(travauxApi,travauxContainer);
+        }
+        })
     })
+    
+};
 
-        
+
+await filtersCategories();
+
+//Changement couleur au clic //
+
+const buttons = document.querySelectorAll(".filter__btn");
+buttons.forEach(button => button.addEventListener("click", function() {
+    buttons.forEach((bouton) => {
+      bouton.classList.remove("filter__btn--active");
     });
-}
+const buttonsId = document.getElementById(`${button.id}`);
+buttonsId.classList.add("filter__btn--active");
 
-filtersWorks();
+}))
