@@ -20,7 +20,6 @@ function createWorks (travaux, gallery) {
 
 const filtersContainer = document.querySelector('.filters')
 
-// Récupération des catégories
 async function getCategories () {
     const categoryApi = await fetch ('http://localhost:5678/api/categories');
     return await categoryApi.json();
@@ -50,15 +49,12 @@ buttons.forEach(button => {
                 return travail.categoryId == buttonId;
             });
            createWorks(worksFilters,travauxContainer);
-            console.log(worksFilters);
         } else {
             createWorks(travauxApi,travauxContainer);
         }
         })
     })
-    
 };
-
 
 await filtersCategories();
 
@@ -71,5 +67,7 @@ buttons.forEach(button => button.addEventListener("click", function() {
     });
 const buttonsId = document.getElementById(`${button.id}`);
 buttonsId.classList.add("filter__btn--active");
-
 }))
+
+
+
