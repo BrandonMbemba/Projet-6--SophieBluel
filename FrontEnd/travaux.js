@@ -9,8 +9,8 @@ travauxApi = await travauxApi.json()
 createWorks(travauxApi,travauxContainer)
 
 function createWorks (travaux, gallery) {
-    travauxApi.forEach(element => {
-        travauxContainer.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
+    travaux.forEach(element => {
+        gallery.innerHTML += `<figure> <img src="${element.imageUrl}" alt="" /> ${element.title}
          </figure>`      
     });
 
@@ -49,10 +49,7 @@ buttons.forEach(button => {
             const worksFilters = works.filter(travail => {
                 return travail.categoryId == buttonId;
             });
-            worksFilters.forEach(travail => {
-                travauxContainer.innerHTML += `<figure> <img src="${travail.imageUrl}" alt="" /> ${travail.title}
-         </figure>`
-            });
+           createWorks(worksFilters,travauxContainer);
             console.log(worksFilters);
         } else {
             createWorks(travauxApi,travauxContainer);
