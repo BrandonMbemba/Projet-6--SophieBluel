@@ -11,9 +11,27 @@
       rel="stylesheet"
     />
     <meta name="description" content="" />
-    <script src="travaux.js" defer type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/c22bc638d0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js" defer type="module"></script>
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
+  <div class="modale__container">
+    <div class="modale">
+      <i class="fa-solid fa-xmark"></i>
+      <h3>Galerie Photo</h3>
+      <div class="modale__photos"></div>
+      <buttton class="modale__button">Ajouter une Photo</buttton>
+    </div>
+  </div>
+  <div class="admin">
+    <div class="admin__edition">
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Mode édition</p>
+    </div>
+  </div>
   <body>
     <header>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -21,7 +39,7 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <a href="login.html" class="text-line-color">
+          <a href="login.html" class="text-line-color logout">
             <li>login</li>
           </a>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
@@ -54,6 +72,10 @@
       </section>
       <section id="portfolio">
         <h2>Mes Projets</h2>
+        <div class="edit">
+          <i class="fa-regular fa-pen-to-square"></i>
+          <p>modifier</p>
+        </div>
         <div class="filters">
           <button id="null" class="filter__btn filter__btn--active">
             Tous
@@ -75,7 +97,6 @@
         </form>
       </section>
     </main>
-
     <footer>
       <nav>
         <ul>

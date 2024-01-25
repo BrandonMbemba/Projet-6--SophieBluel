@@ -84,6 +84,12 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+h3 {
+	font-size: 30px;
+	color: black;
+	margin-bottom: 20px;
+}
 nav ul {
 	display: flex;
 	align-items: center;
@@ -102,6 +108,10 @@ li:hover {
 .text-line-color {
 	color: unset;
     text-decoration: unset;
+}
+
+.text-size {
+	font-size: 1.2em;
 }
 
 #introduction {
@@ -264,3 +274,110 @@ footer nav ul {
 .emailPassword__error {
 	margin-top: 25px;
 }
+
+.admin {
+	display: none;
+}
+
+.admin__edition {
+    display: flex;
+    justify-content: center;
+    background: black;
+    color: white;
+    gap: 1%;
+    align-items: center;
+    height: 6vh;
+}
+
+.edit {
+	display: none;
+    justify-content: center;
+    position: relative;
+    left: 650px;
+    bottom: 50px;
+	cursor: pointer;
+	width: 5vw;
+	gap: 10px;
+}
+
+.modale__container {
+	display: none;
+	position: fixed;
+	background-color:#0000004D;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.modale {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	width: 60vw;
+	height: 80vh;
+	border-radius: 5px;
+	padding: 50px;
+	position: relative;
+}
+
+.modale img {
+	width: 95px;
+	height: 120px;
+	object-fit: cover;
+}
+
+.modale__photos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.modale__photos .fa-trash-can {
+	display: flex;
+    position: relative;
+    background-color: black;
+    color: white;
+    width: 1.2em;
+    height: 1.2em;
+    top: 30px;
+    left: 63px;
+    justify-content: center;
+    padding: 4px;
+    font-size: 13px;
+	cursor: pointer;
+}
+
+.modale__photos::after {
+	display: flex;
+	content: " ";
+	border-top: 2px solid #B3B3B3;
+	height: 1px;
+	width: 100%;
+	margin: 40px auto;
+}
+
+.modale .fa-xmark {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.modale__button {
+	width: 18vw;
+	display: flex;
+	justify-content: center;
+	font-family: "Syne";
+    padding: 10px 20px;
+    border: 1px solid #1D6154;
+    border-radius: 25px;
+    color: white;
+    background-color: #1D6154;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
