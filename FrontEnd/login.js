@@ -19,11 +19,11 @@ async function login (e) {
     const chargeUtile = JSON.stringify(user);
     console.log(chargeUtile);
     try{
-    const response = await fetch("http://localhost:5678/api/users/login", {
-        method: "POST",
-        headers:{  "Content-Type": "application/json",
+        const response = await fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            headers:{  "Content-Type": "application/json",
                     "accept" : "application/json",    },
-        body:   chargeUtile
+            body:   chargeUtile
     })
     const data = await response.json();
     console.log(data);
@@ -36,7 +36,7 @@ async function login (e) {
     }
 }   catch(error) {
     const p = document.createElement("p");
-        p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
-        pwdEmailError.appendChild(p);
+    p.innerHTML = "La combinaison e-mail/mot de passe est incorrecte";
+    pwdEmailError.appendChild(p);
 }
 }

@@ -88,7 +88,8 @@ h2{
 h3 {
 	font-size: 30px;
 	color: black;
-	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
 }
 nav ul {
 	display: flex;
@@ -293,7 +294,7 @@ footer nav ul {
 	display: none;
     justify-content: center;
     position: relative;
-    left: 650px;
+    left: 700px;
     bottom: 50px;
 	cursor: pointer;
 	width: 5vw;
@@ -304,7 +305,8 @@ footer nav ul {
 	display: none;
 	position: fixed;
 	background-color:#0000004D;
-	width: 100%;
+	width: 100vw;
+	max-width: 1140px;
 	height: 100%;
 	justify-content: center;
 	align-items: center;
@@ -316,23 +318,41 @@ footer nav ul {
 	flex-direction: column;
 	align-items: center;
 	background-color: white;
-	width: 60vw;
+	width: 40vw;
 	height: 80vh;
 	border-radius: 5px;
-	padding: 50px;
+	padding: 65px;
+	position: relative;
+}
+
+.modale__2 {
+	display: none;
+	justify-content: space-around;
+	flex-direction: column;
+	background-color: white;
+	width: 40vw;
+	height: 80vh;
+	border-radius: 5px;
+	padding: 65px;
 	position: relative;
 }
 
 .modale img {
-	width: 95px;
-	height: 120px;
+	width: 91px;
+	height: 105px;
 	object-fit: cover;
 }
 
 .modale__photos {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	padding: 0px 25px 0px 25px;
+	width: 36vw;
+}
+
+.modale__photos figure {
+	width: 9vw;
+    height: 17vh;
 }
 
 .modale__photos .fa-trash-can {
@@ -381,3 +401,120 @@ footer nav ul {
     transition: all 0.5s ease;
 }
 
+.modale__2 button {
+	width: 18vw;
+	display: flex;
+	justify-content: center;
+	font-family: "Syne";
+    padding: 10px 20px;
+	border: none;
+    border-radius: 25px;
+    color: white;
+    background-color: #A7A7A7;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.modale-projet-form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modale-projet-logo{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.form-group-photo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+	margin-top: 30px;
+	background-color: #E8F1F7;
+	width: 30vw;
+	height: 20vh;
+	border-radius: 10px;
+}
+.form-group-photo i{
+	color: #306685;
+	font-size: 90px;
+	font-weight: 100;
+	margin: 20px;
+	margin-top: -25px;
+}
+.form-group-photo input {
+	display: none;
+}
+
+.form-group-photo img {
+	display: none;
+	height: 199px;
+	width: 174px;
+	object-fit: cover;
+	position: absolute;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.form-group-photo label {
+	font-family: 'work sans';
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 40px;
+	background-color: #CBD6DC;
+	color: #306685;
+	border-radius: 50px;
+	cursor: pointer;
+	margin-top: -10px;
+}
+.form-group-photo::after {
+	content: "jpg, png : 4mo max";
+}
+
+.form-group-title{
+	display: flex;
+	flex-direction: column;
+	width: 33vw;
+}
+.form-group-title input{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.form-group-title label{
+	margin: 3em 0 1em 0;
+}
+
+.form-group-id{
+	display: flex;
+	flex-direction: column;
+	width: 33vw;
+}
+.form-group-id select{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.form-group-id label{
+	margin: 3em 0 1em 0;
+}
+
+.form-group-id::after {
+	display: flex;
+	content: " ";
+	border-top: 2px solid #B3B3B3;
+	height: 1px;
+	width: 100%;
+	margin: 40px auto;
+}
