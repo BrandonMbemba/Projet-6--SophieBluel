@@ -48,7 +48,6 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -90,6 +89,14 @@ h3 {
 	color: black;
 	display: flex;
 	justify-content: center;
+}
+
+.fa-arrow-left {
+	cursor: pointer;
+}
+
+.fa-xmark {
+	cursor: pointer;
 }
 nav ul {
 	display: flex;
@@ -297,7 +304,7 @@ footer nav ul {
     left: 700px;
     bottom: 50px;
 	cursor: pointer;
-	width: 5vw;
+	width: 33vw;
 	gap: 10px;
 }
 
@@ -306,7 +313,6 @@ footer nav ul {
 	position: fixed;
 	background-color:#0000004D;
 	width: 100vw;
-	max-width: 1140px;
 	height: 100%;
 	justify-content: center;
 	align-items: center;
@@ -401,7 +407,7 @@ footer nav ul {
     transition: all 0.5s ease;
 }
 
-.modale__2 button {
+.button {
 	width: 18vw;
 	display: flex;
 	justify-content: center;
@@ -453,8 +459,8 @@ footer nav ul {
 
 .form-group-photo img {
 	display: none;
-	height: 199px;
-	width: 174px;
+	height: 214px;
+	width: 164px;
 	object-fit: cover;
 	position: absolute;
 }
