@@ -259,11 +259,11 @@ let allowedExtension = [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'i
 
 
 form.addEventListener('submit', async (e) => {
-  let type = imageInput.files[ 0 ].type
-  e.preventDefault()
-  if (allowedExtension.indexOf(type) > -1) {
-    alert('ok')
-
+  e.preventDefault() 
+  if (title.value === "" || formCategory.value === "" || !imageInput.files[0] ) {
+    alert("Merci de remplir tous les champs");
+  } else if (allowedExtension.indexOf(type) > -1) {
+    let type = imageInput.files[ 0 ].type
     const formData = new FormData()
     formData.append('title', title.value)
     formData.append('image', imageInput.files[ 0 ])
@@ -277,7 +277,7 @@ form.addEventListener('submit', async (e) => {
     })
 
     if (response.status === 201) {
-      let image = await response.json()
+      const image = await response.json()
       travauxApi.push(image)
       backToModal()
       reset()
