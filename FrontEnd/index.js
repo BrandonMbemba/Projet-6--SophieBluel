@@ -260,6 +260,7 @@ let allowedExtension = [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'i
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault() 
+debugger
   if (title.value === "" || formCategory.value === "" || !imageInput.files[0] ) {
     alert("Merci de remplir tous les champs");
   } else if (allowedExtension.indexOf(type) > -1) {
