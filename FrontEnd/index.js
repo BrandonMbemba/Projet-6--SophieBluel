@@ -231,21 +231,29 @@ const imageLabel = document.querySelector('.form-group-photo label')
 const imagePreview = document.querySelector('.form-group-photo img')
 const imageLogo = document.querySelector('.form-group-photo span')
 
+let allowedExtension = [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp' ]
 
 const previewImage = () => {
   const file = imageInput.files
-  if (file) {
-    const fileReader = new FileReader()
-    const preview = document.getElementById('file-preview')
-    fileReader.onload = () => {
-      imagePreview.style.display = 'flex'
-      preview.setAttribute('src', event.target.result)
+  if (file[0]) {
+    if (allowedExtension.indexOf(file[0].type) === -1) {
+      alert('Not a image')
+      modaleButton2.classList.remove('modale__button')
+      modaleButton2.classList.add('button')
+    } else {
+
+      const fileReader = new FileReader()
+      const preview = document.getElementById('file-preview')
+      fileReader.onload = (event) => {
+        imagePreview.style.display = 'flex'
+        preview.setAttribute('src', event.target.result)
+      }
+      fileReader.readAsDataURL(file[ 0 ])
+      imageLabel.style.display = 'none'
+      imageLogo.style.display = 'none'
+      changeButtonColor()
     }
-    fileReader.readAsDataURL(file[ 0 ])
-    imageLabel.style.display = 'none'
-    imageLogo.style.display = 'none'
-    changeButtonColor()
-    
+
   }
 }
 imageInput.addEventListener('change', previewImage)
@@ -255,16 +263,13 @@ imageInput.addEventListener('change', previewImage)
 const form = document.querySelector('.modale__2 form')
 const title = document.querySelector('#title')
 const formCategory = document.querySelector('#category')
-let allowedExtension = [ 'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp' ]
 
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault() 
-debugger
+  e.preventDefault()
   if (title.value === "" || formCategory.value === "" || !imageInput.files[0] ) {
     alert("Merci de remplir tous les champs");
-  } else if (allowedExtension.indexOf(type) > -1) {
-    let type = imageInput.files[ 0 ].type
+  } else  {
     const formData = new FormData()
     formData.append('title', title.value)
     formData.append('image', imageInput.files[ 0 ])
@@ -303,10 +308,5 @@ debugger
       alert('Vous n\'êtes pas authorisé à ajouter a un projet')
       window.location.href = 'login.html'
     }
-  } else {
-    alert('Not a image')
-    modaleButton2.classList.remove('modale__button')
-    modaleButton2.classList.add('button')
-    reset()
   }
 })
