@@ -51,7 +51,7 @@ function filtersCategories() {
         })
         createWorks(worksFilters, travauxContainer)
       } else {
-        createWorks(travauxApi, travauxContainer)
+        createWorks(travauxApi, travauxContainer) 
       }
     })
   })
